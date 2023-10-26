@@ -1,0 +1,2 @@
+Maximum at x = [1.57079632], y = 1.0
+Field under the function: -0.0027
