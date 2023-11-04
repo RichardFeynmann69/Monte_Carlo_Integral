@@ -1,2 +1,2 @@
 # Monte_Carlo_Integral
-variable 'value' have to be correct with numpy syntax
+variable 'value' in 'Config.ini' file have to be correct with numpy syntax

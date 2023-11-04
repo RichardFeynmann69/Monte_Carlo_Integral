@@ -11,11 +11,7 @@ config.read('config.ini')
 
 def f(x):
     value_string= config["EQ"]["value"]
-    add = float(config["EQ"]["add"])
-    substract = float(config["EQ"]["substract"])
-    multiple = float(config["EQ"]["multiple"])
-    divide = float(config["EQ"]["divide"])
-    value= multiple*(add + eval(value_string) -substract)/divide
+    value= eval(value_string)
     return value
 
 up_limit = float(config["EQ"]["up_limit"])
@@ -28,9 +24,6 @@ if result.success:
     max_x = result.x
     max_y = -result.fun  # Restore the original sign
 
-    file = open("Output.txt", "w")
-    file.write(f"Maximum at x = {max_x}, y = {max_y}\n")
-    file.close()
 else:
     print("Failed to find the maximum.")
 
@@ -42,8 +35,8 @@ for i in range(iteration):
     under += fun_value
 
 field = (up_limit-low_limit)*(under/iteration)
-field_round=round(field,4)
-file = open("Output.txt", "a")
+field_round=round(field,3)
+file = open("Output.txt", "w")
 file.write(f"Field under the function: {field_round}")
 file.close()  
 
@@ -59,7 +52,7 @@ fig, ax = plt.subplots()
 ax.plot(x_plot, y, linewidth=2.0)
 
 ax.set(xlim=(low_limit, up_limit), xticks=np.arange(low_limit, up_limit),
-       ylim=(0, max_x), yticks=np.arange(0, max_y))
+       ylim=(0, max_x), yticks=np.arange(0, 5))
 
 plt.fill_between(x_plot, y1=f(x_plot) ,color= "b", alpha= 0.2)
 
